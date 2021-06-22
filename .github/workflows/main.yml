@@ -1,0 +1,12 @@
+name: CI
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: docker:dind
+    steps:
+      - uses: actions/checkout@v2
+      - name: build the project
+        run: |
+          docker version
+          docker run --rm --privileged multiarch/qemu-user-static --reset -p no
